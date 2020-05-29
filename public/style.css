@@ -1,3 +1,89 @@
+#login, #loggedin {
+  display: none;
+}
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 500px;
+}
 .tab button.active {
-  background-color: #ccc;
+  background-color: #C9E1E2;
+}
+.tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.tab {
+  background-color: #f1f1f1;
+  font-size:32px;
+  overflow:hidden;
+  text-align:center;
+}
+.tab button:hover {
+  background-color: #add8e0;
+}
+.tablinks {
+  border:none;
+  outline:none;
+  padding:14px 16px;
+  transition:0.3s;
+}
+.album-img {
+  padding-bottom:5px;
+}
+
+.datatable {
+  table-layout:fixed;
+  width:100%;
+  border-collapse:collapse;
+  font-size:24px;
+}
+
+.datatable th {
+  padding:10px;
+  text-align:center;
+}
+
+.datatable td {
+  padding:10px;
+  text-align:center;
+}
+
+.album-rep {
+  text-align:center;
+  display:inline-table;
+  vertical-align: top;
+  padding:1.25rem;
+}
+
+.album-rep h3 {
+  font-size:28px;
+}
+
+.track-rep {
+  font-size:24px;
+  margin-top:.5rem;
+}
+
+.media-body {
+  font-size:24px;
+}
+
+.img-style {
+  position:relative;
+  display:inline-block;
+  width:150px;
+  height:150px;
+  overflow:hidden;
+  border-radius:50%;
+}
+
+.img-style img {
+  margin-left:-50px;
+  height:100%;
+  width:auto;
 }
