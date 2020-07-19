@@ -19,7 +19,6 @@
         <div id="oauth">
         </div>
         <div id="user-settings">
-          <h2> Hello. </h2>
         </div>
         <div id="album-art">
         </div>
@@ -28,43 +27,36 @@
 
     <script id="user-settings-template" type="text/x-handlebars-template">
       <form id="user-params" onsubmit="displayAll(event)" style="font-size:24px;">
-        <div>
-          <label for="display-w">Display Width: </label>
-          <input type="text" id="display-w" name="display-w">
+        <div class="form-group">
+          <label for="display-w">Display Width </label>
+          <input class="form-control form-control-lg" type="text" id="display-w" name="display-w">
         </div>
-        <div>
-          <label for="total-tracks">Total Albums to Display: </label>
-          <input type="text" id="total-tracks" name="total-tracks">
+        <div class="form-group">
+          <label for="total-tracks">Total Albums to Display </label>
+          <input class="form-control form-control-lg" type="text" id="total-tracks" name="total-tracks">
         </div>
-        <div>
+        <div class="form-group">
+          <div>
+          <input class ="form-check-radio form-control-lg" type="radio" id="weeks" name="length" value="short_term">
           <label for="weeks">Four Weeks</label>
-          <input type="radio" id="weeks" name="length" value="short_term">
-          <label for="months">Six Months</label>
-          <input type="radio" id="months" name="length" value="medium_term">
-          <label for="all-time">All Time</label>
-          <input type="radio" id="all-time" name="length" value="long_term" checked>
         </div>
         <div>
-          <input type="submit" value="Submit">
+          <input class ="form-check-radio form-control-lg" type="radio" id="months" name="length" value="medium_term">
+          <label for="months">Six Months</label>
+        </div>
+        <div>
+          <input class ="form-check-radio form-control-lg" type="radio" id="all-time" name="length" value="long_term" checked>
+          <label for="all-time">All Time</label>
+        </div>
+        </div>
+        <div>
+          <input class="btn btn-primary" type="submit" value="Submit">
         </div>
       </form>
     </script>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
       <h1>Logged in as {{display_name}}</h1>
-      <div class="media">
-        <div class="pull-left img-style">
-          <a href="{{images.0.url}}"><img class="media-object" src="{{images.0.url}}" alt="profile picture"/></a>
-        </div>
-        <div class="media-body">
-          <dl class="dl-horizontal">
-            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-            <dt>Id</dt><dd>{{id}}</dd>
-            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-            <dt>Country</dt><dd>{{country}}</dd>
-          </dl>
-        </div>
-      </div>
     </script>
 
     <script id="oauth-template" type="text/x-handlebars-template">

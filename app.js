@@ -1,19 +1,19 @@
 /**
- * Spotify example code for authentication
+ * Used from Spotify authentication example
  * For more information, read
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
-var secrets = require('./secrets')
-var express = require('express'); // Express web server framework
-var request = require('request'); // "Request" library
+var config = require('./config') //create config file with your own auth credentials
+var express = require('express');
+var request = require('request');
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var Spotify = require('spotify-web-api-js');
 
-var client_id = secrets.client_id; // Your client id
-var client_secret = secrets.client_secret; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var client_id = config.client_id; // Your client id
+var client_secret = config.client_secret; // Your secret
+var redirect_uri = config.redirect_uri; //Your registered redirect URIs
 var s = new Spotify();
 
 
@@ -59,9 +59,6 @@ app.get('/login', function(req, res) {
 
 app.get('/callback', function(req, res) {
 
-  // your application requests refresh and access tokens
-  // after checking the state parameter
-
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -98,12 +95,10 @@ app.get('/callback', function(req, res) {
           json: true
         };
 
-        // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
         });
 
-        // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
           querystring.stringify({
             access_token: access_token,
@@ -121,7 +116,6 @@ app.get('/callback', function(req, res) {
 
 app.get('/refresh_token', function(req, res) {
 
-  // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -143,9 +137,5 @@ app.get('/refresh_token', function(req, res) {
   });
 });
 
-app.get('/display_art', function(req, res) {
-
-});
-
-console.log('Listening on 8888');
-app.listen(8888);
+console.log(`Listening on ${config.port}`);
+app.listen(config.port);
